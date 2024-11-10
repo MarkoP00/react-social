@@ -1,5 +1,5 @@
 // router imports
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
 // components
 import Sidebar from "./components/sidebar/Sidebar";
@@ -17,41 +17,43 @@ const SingleUser = lazy(() =>
 
 export default function App() {
   return (
-    <Suspense fallback={<GlobalLoader></GlobalLoader>}>
-      <AppContextProvider>
-        <div className="flex">
-          <Sidebar></Sidebar>
-          <div className="flex-grow">
-            <Routes>
-              <Route
-                path="/"
-                element={<MainPage></MainPage>}></Route>
-              <Route
-                path="*"
-                element={<MainPage />}
-              />
-              <Route
-                path="/mainPage"
-                element={<MainPage></MainPage>}></Route>
-              <Route
-                path="/login"
-                element={<Login></Login>}></Route>
-              <Route
-                path="/create"
-                element={<Create></Create>}></Route>
-              <Route
-                path="/post"
-                element={<UserPost></UserPost>}></Route>
-              <Route
-                path="/singleUser/:id"
-                element={<SingleUser></SingleUser>}></Route>
-              <Route
-                path="/createPost"
-                element={<CreatePost></CreatePost>}></Route>
-            </Routes>
+    <HashRouter>
+      <Suspense fallback={<GlobalLoader></GlobalLoader>}>
+        <AppContextProvider>
+          <div className="flex">
+            <Sidebar></Sidebar>
+            <div className="flex-grow">
+              <Routes>
+                <Route
+                  path="/"
+                  element={<MainPage></MainPage>}></Route>
+                <Route
+                  path="*"
+                  element={<MainPage />}
+                />
+                <Route
+                  path="/mainPage"
+                  element={<MainPage></MainPage>}></Route>
+                <Route
+                  path="/login"
+                  element={<Login></Login>}></Route>
+                <Route
+                  path="/create"
+                  element={<Create></Create>}></Route>
+                <Route
+                  path="/post"
+                  element={<UserPost></UserPost>}></Route>
+                <Route
+                  path="/singleUser/:id"
+                  element={<SingleUser></SingleUser>}></Route>
+                <Route
+                  path="/createPost"
+                  element={<CreatePost></CreatePost>}></Route>
+              </Routes>
+            </div>
           </div>
-        </div>
-      </AppContextProvider>
-    </Suspense>
+        </AppContextProvider>
+      </Suspense>
+    </HashRouter>
   );
 }

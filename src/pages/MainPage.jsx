@@ -59,7 +59,6 @@ export default function MainPage() {
         if (response.ok) {
           const responseData = await response.json();
           setCommentPostData(responseData);
-          console.log(responseData);
         }
       } catch (error) {
         console.error("Error fetching comments:", error);

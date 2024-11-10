@@ -51,7 +51,6 @@ export default function SingleUser() {
         const response = await fetchService.get(`/social_media/users/${id}`);
         if (response) {
           setUserData(response.data.user);
-          console.log(response.data.user);
 
           const isFollowing = response.data.user.followers.some(
             (follower) => follower.id === loggedUserID
@@ -78,7 +77,6 @@ export default function SingleUser() {
             (post) => post.author.id === id
           );
           setUserPost(filterPost);
-          console.log(responseData.data.posts);
           setIsLoadingPost(false);
         }
       } catch (error) {

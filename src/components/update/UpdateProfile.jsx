@@ -31,7 +31,7 @@ export default function UpdateProfile({ userData, span, text, onClose }) {
       if (!error && result && result.event === "success") {
         const uploadedImageUrl = result.info.secure_url;
         setProfilePicture(uploadedImageUrl);
-
+        localStorage.setItem("loggedUserProfilePicture", uploadedImageUrl);
         const body = {
           profile_picture: result.info.secure_url,
           username: usernameRef.current
